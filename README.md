@@ -45,22 +45,20 @@ This project was engineered specifically to fulfill 5 rigorous cloud-computing a
 
 ---
 
-## 💻 Tech Stack
+## 💻 Tech Stack (Cloud Computing Mini-Project Focus)
 
-**Frontend Design:**
-- Framework: Next.js (React 19)
-- Styling: Custom Vanilla CSS (Apple-Inspired Light Theme Glassmorphism)
-- Session Handling: JSON Web Tokens (Cookies & LocalStorage Backup)
+**AWS Cloud Infrastructure (The Core):**
+- **Amazon EC2:** Virtual Machine hosting the persistent Node.js runtime and asynchronous matchmaking logic.
+- **Amazon RDS (MySQL):** Managed relational database executing strict ACID transactions for competitive synchronized score-keeping.
+- **Amazon S3:** Object storage network offloading heavy HTTP-bandwidth operations like user profile datasets.
+- **Application Load Balancer (ALB):** Traffic distributor algorithm scaling web traffic gracefully across isolated EC2 instances.
+- **VPC & Security Groups:** Foundational cloud-firewall restricting open-internet intrusion on hidden internal layer databases.
 
-**Backend Engine:**
-- Engine: Next.js Native App Route Handlers (`/api/...`)
-- Security: `bcryptjs`
-- Matchmaking: Polled Async Locking Mechanisms
-
-**Database & Cloud:**
-- Local Instance: `DEMO_MODE=true` (In-Memory Arrays)
-- Production DB: AWS RDS (MySQL2 Client)
-- Production Objects: AWS SDK (`@aws-sdk/client-s3`)
+**Application Software:**
+- **Full-Stack Framework:** Next.js (React 19) running server-side SSR route handlers (`/api/...`).
+- **Database Connectivity:** `mysql2` native client executing parameterized queries securely into Amazon RDS.
+- **Storage Connectivity:** `@aws-sdk/client-s3` securely interfacing Node directly with bucket nodes.
+- **Security & Sessions:** `bcryptjs` password encryption bridged with mathematically signed JWTs.
 
 ---
 
