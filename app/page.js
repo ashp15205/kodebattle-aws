@@ -1,66 +1,55 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-export default function Home() {
+export default function LandingPage() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) router.push('/dashboard');
+  }, [user, router]);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Hero */}
+      <section className="landing-hero">
+        <div className="hero-badge">⚔️ The Ultimate Battle Arena</div>
+        <h1 className="hero-title">
+          <span className="gradient-text">KodeBattle</span>
+          <br />Compete. Learn. Win.
+        </h1>
+        <p className="hero-subtitle">
+          Real-time 1v1 DSA quiz battles. Outsmart your opponent, climb the leaderboard, and prove your algorithmic mastery.
+        </p>
+        <div className="hero-buttons">
+          <Link href="/register" className="btn btn-primary btn-lg">Get Started →</Link>
+          <Link href="/login" className="btn btn-secondary btn-lg">Sign In</Link>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features */}
+      <section className="container">
+        <div className="features-grid">
+          <div className="glass-card feature-card animate-in animate-in-delay-1">
+            <div className="feature-icon" style={{ background: 'rgba(99,102,241,0.15)' }}>⚔️</div>
+            <h3>1v1 Ranked Battles</h3>
+            <p>Real-time matchmaking in a highly competitive arena. Compete head-to-head on DSA topics. Winner earns points, ranks are updated instantly.</p>
+          </div>
+          <div className="glass-card feature-card animate-in animate-in-delay-2">
+            <div className="feature-icon" style={{ background: 'rgba(16,185,129,0.15)' }}>🛡️</div>
+            <h3>Anti-Cheat System</h3>
+            <p>Strict full-screen enforcement. Switch tabs or minimize? You receive a warning. Three warnings mean an automatic forfeit.</p>
+          </div>
+          <div className="glass-card feature-card animate-in animate-in-delay-3">
+            <div className="feature-icon" style={{ background: 'rgba(14,165,233,0.15)' }}>🏆</div>
+            <h3>Global Leaderboard</h3>
+            <p>Live rankings and ELO system. Earn points per correct answer, climb from Bronze to Legend across all players worldwide.</p>
+          </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
